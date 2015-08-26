@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <script src="area.js?v=1"></script>
+    <script src="area.js"></script>
     <script src="../src/CascadeSelect.js"></script>
 </head>
 <body>
@@ -14,19 +14,19 @@
     详细地址:<input type="text" id="Address" />
 
 <script>
-    var areas = [document.getElementById('Province'), document.getElementById('City'), document.getElementById('Area')],
-        values = [43, 4307, 430723]
-        
-    var address3 = CascadeSelect(areas, {
-        data: area,
-        //url: 'area.json',
+    var areas = document.getElementsByTagName('select'),
+        values = ["11", "1101", "110102"]
+
+    var address = CascadeSelect(areas, {
+        //data: area,
+        url: 'area.json',
         parentField: 'ParentAreaCode',
         rootParentID: '0001',
         textField: 'AreaName',
         valueField: 'AreaCode',
         selectedValues: values,
         onSelected: function (select, address) {
-            $('#Address3').val(address.getDescript('-'));
+            document.getElementById('Address').value = address.getDescript('-')
         }
     });
 </script>

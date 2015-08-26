@@ -1,5 +1,4 @@
-﻿//ie9+
-(function (factory) {
+﻿(function (factory) {
     if (typeof define === 'function' && define.amd) {
         define(factory)
     } else {
@@ -125,6 +124,14 @@
                 select.value = selectedValues[index] || ''
                 this._onChange(index, nonCallback)
             }, this)
+        },        
+        /**
+         * 获取下拉框的值
+         */
+        getValues: function(){
+            return this.selects.map(function (select) { 
+                return select.value 
+            })
         },
         /**
          * 获取下拉框的描述
@@ -178,6 +185,7 @@
                 result,
                 xhr = new XMLHttpRequest()
 
+            //todo 改为异步模式
             xhr.open('GET', url, false)
 
             xhr.onreadystatechange = function myfunction() {
@@ -187,11 +195,6 @@
                 } else {
                     console.error(xhr.statusText)
                 }
-            }
-
-            xhr.timeout = 1000
-            xhr.ontimeout = function () {
-                console.error('request timeout')
             }
 
             xhr.send()
