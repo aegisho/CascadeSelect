@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="area.js?v=1"></script>
+    <script src="../src/CascadeSelect.js"></script>
+</head>
+<body>
+    省:<select id="Province"></select>
+    市:<select id="City"></select>
+    区:<select id="Area"></select>
+
+    详细地址:<input type="text" id="Address" />
+
+<script>
+    var areas = [document.getElementById('Province'), document.getElementById('City'), document.getElementById('Area')],
+        values = [43, 4307, 430723]
+        
+    var address3 = CascadeSelect(areas, {
+        data: area,
+        //url: 'area.json',
+        parentField: 'ParentAreaCode',
+        rootParentID: '0001',
+        textField: 'AreaName',
+        valueField: 'AreaCode',
+        selectedValues: values,
+        onSelected: function (select, address) {
+            $('#Address3').val(address.getDescript('-'));
+        }
+    });
+</script>
+</body>
+</html>
