@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <script src="area.js"></script>
-    <script src="../src/CascadeSelect.js"></script>
+    <script src="../CascadeSelect.js"></script>
 </head>
 <body>
     省:<select id="Province"></select>
@@ -13,22 +13,22 @@
 
     详细地址:<input type="text" id="Address" />
 
-<script>
-    var areas = document.getElementsByTagName('select'),
-        values = ["11", "1101", "110102"]
+    <script>
+        var areas = document.getElementsByTagName('select'),
+            values = ["11", "1101", "110102"]
 
-    var address = CascadeSelect(areas, {
-        //data: area,
-        url: 'area.json',
-        parentField: 'ParentAreaCode',
-        rootParentID: '0001',
-        textField: 'AreaName',
-        valueField: 'AreaCode',
-        selectedValues: values,
-        onSelected: function (select, address) {
-            document.getElementById('Address').value = address.getDescript('-')
-        }
-    });
-</script>
+        var address = CascadeSelect(areas, {
+            data: area,
+            url: 'area.json',
+            parentField: 'ParentAreaCode',
+            rootParentID: '0001',
+            textField: 'AreaName',
+            valueField: 'AreaCode',
+            selectedValues: values,
+            onSelected: function (select, address) {
+                document.getElementById('Address').value = address.getDescripts('-')
+            }
+        });
+    </script>
 </body>
 </html>
