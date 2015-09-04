@@ -1,12 +1,14 @@
-﻿(function (factory) {
-    if (typeof define === 'function' && define.amd) {
+﻿(function (window, factory) {
+    if (typeof exports === 'object') {
+        module.exports = factory()
+    } else if (typeof define === 'function' && define.amd) {
         define(factory)
     } else {
         window.CascadeSelect = factory()
     }
-}(function () {
+}(this, function () {
     'use strict'
-
+    
     function mixin(obj, src) {
         for (var key in src) {
             if (src.hasOwnProperty(key)) {
